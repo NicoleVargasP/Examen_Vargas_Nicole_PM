@@ -1,19 +1,19 @@
 package ucb.vargasn.project.di
 
 import org.koin.dsl.module
-import ucb.vargasn.project.catalog.data.datasource.CatalogRemoteDataSource
-import ucb.vargasn.project.catalog.data.repository.CatalogRepositoryImpl
-import ucb.vargasn.project.catalog.data.service.CatalogService
-import ucb.vargasn.project.catalog.domain.repository.CatalogRepository
+import ucb.vargasn.project.earthquakes_examen.data.datasource.EarthquakeRemoteDataSource
+import ucb.vargasn.project.earthquakes_examen.data.repository.EarthquakeRepositoryImpl
+import ucb.vargasn.project.earthquakes_examen.data.service.EarthquakeService
+import ucb.vargasn.project.earthquakes_examen.domain.repository.EarthquakeRepository
 
 val dataModule = module {
 
-    single<CatalogRemoteDataSource> {
-        CatalogService()
+    single<EarthquakeRemoteDataSource> {
+        EarthquakeService()
     }
 
-    single<CatalogRepository> {
-        CatalogRepositoryImpl(get())
+    single<EarthquakeRepository> {
+        EarthquakeRepositoryImpl(get())
     }
 
 }

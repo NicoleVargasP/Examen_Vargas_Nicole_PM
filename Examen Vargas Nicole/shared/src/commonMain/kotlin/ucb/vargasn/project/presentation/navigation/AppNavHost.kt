@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import ucb.vargasn.project.catalog.presentation.screen.CatalogScreen
+import ucb.vargasn.project.earthquakes_examen.presentation.screen.EarthquakeScreen
 
 @Composable
 fun AppNavHost() {
@@ -13,12 +13,11 @@ fun AppNavHost() {
 
     NavHost(
         navController = navController,
-        startDestination = NavRoute.Catalog
+        startDestination = NavRoute.Earthquake
     ) {
 
-        composable<NavRoute.Catalog> {
-            CatalogScreen()
+        composable<NavRoute.Earthquake> {
+            EarthquakeScreen()
         }
-
     }
 }

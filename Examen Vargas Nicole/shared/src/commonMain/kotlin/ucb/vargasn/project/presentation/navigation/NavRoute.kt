@@ -6,5 +6,6 @@ import kotlinx.serialization.Serializable
 sealed class NavRoute {
 
     @Serializable
-    object Catalog : NavRoute()
+    object Earthquake : NavRoute()
+
 }
