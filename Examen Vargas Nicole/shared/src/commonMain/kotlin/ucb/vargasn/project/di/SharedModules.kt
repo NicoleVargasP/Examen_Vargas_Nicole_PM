@@ -5,6 +5,7 @@ import org.koin.core.module.Module
 
 fun sharedModule(): List<Module> = listOf(
     dataModule,
+    databaseModule,
     presentationModule,
     domainModule
 )

@@ -1,14 +1,19 @@
 package ucb.vargasn.project
 
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.runtime.*
+import kotlinx.coroutines.flow.MutableStateFlow
 import ucb.vargasn.project.presentation.navigation.AppNavHost
+import ucb.vargasn.project.theme.AppDesignSystemTheme
+
+object ThemeManager {
+    val currentTheme = MutableStateFlow("Claro")
+}
 
 @Composable
-@Preview
 fun App() {
-    MaterialTheme {
+    val themeMode by ThemeManager.currentTheme.collectAsState()
+
+    AppDesignSystemTheme(themeMode = themeMode) {
         AppNavHost()
     }
 }

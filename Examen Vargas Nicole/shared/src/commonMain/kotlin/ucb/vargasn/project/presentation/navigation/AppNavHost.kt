@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import ucb.vargasn.project.earthquakes_examen.presentation.screen.EarthquakeScreen
+import ucb.vargasn.project.presentation.screen.IntegrationTestScreen
 
 @Composable
 fun AppNavHost() {
@@ -17,7 +18,15 @@ fun AppNavHost() {
     ) {
 
         composable<NavRoute.Earthquake> {
-            EarthquakeScreen()
+            EarthquakeScreen(
+                onNavigateToDiagnostic = {
+                    navController.navigate(NavRoute.IntegrationTest)
+                }
+            )
+        }
+
+        composable<NavRoute.IntegrationTest> {
+            IntegrationTestScreen()
         }
     }
 }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "522490529659",
+    "project_id": "ucb-vargasn-project",
+    "storage_bucket": "ucb-vargasn-project.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:522490529659:android:ce6c74f56f51dd9ac19fde",
+        "android_client_info": {
+          "package_name": "ucb.vargasn.project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwFjltYKeYil7GmDmrZmU-MMsj19TtJ_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

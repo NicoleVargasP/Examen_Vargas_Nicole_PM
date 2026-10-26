@@ -2,6 +2,7 @@ package ucb.vargasn.project.earthquakes_examen.presentation.screen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -26,7 +27,8 @@ import ucb.vargasn.project.earthquakes_examen.presentation.viewmodel.EarthquakeV
 
 @Composable
 fun EarthquakeScreen(
-    viewModel: EarthquakeViewModel = koinViewModel()
+    viewModel: EarthquakeViewModel = koinViewModel(),
+    onNavigateToDiagnostic: () -> Unit = {}
 ) {
     val state by viewModel.state.collectAsState()
 
@@ -46,10 +48,19 @@ fun EarthquakeScreen(
             .padding(16.dp)
     ) {
 
-        Text(
-            text = "Terremotos USGS",
-            modifier = Modifier.padding(bottom = 16.dp)
-        )
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "Terremotos USGS"
+            )
+
+            Button(onClick = onNavigateToDiagnostic) {
+                Text("Diagnóstico")
+            }
+        }
 
         when {
 

@@ -8,4 +8,7 @@ sealed class NavRoute {
     @Serializable
     object Earthquake : NavRoute()
 
+    @Serializable
+    object IntegrationTest : NavRoute()
+
 }
