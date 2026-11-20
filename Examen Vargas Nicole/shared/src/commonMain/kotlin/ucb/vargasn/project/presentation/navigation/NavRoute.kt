@@ -6,9 +6,12 @@ import kotlinx.serialization.Serializable
 sealed class NavRoute {
 
     @Serializable
-    object Earthquake : NavRoute()
+    object Welcome : NavRoute()
 
     @Serializable
-    object IntegrationTest : NavRoute()
+    object Home : NavRoute()
+
+    @Serializable
+    data class LabDetail(val labId: String) : NavRoute()
 
 }

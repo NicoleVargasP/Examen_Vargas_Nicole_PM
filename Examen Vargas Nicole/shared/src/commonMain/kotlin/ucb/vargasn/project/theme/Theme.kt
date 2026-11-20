@@ -4,8 +4,61 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.ui.graphics.Color
 
-val LocalAppColors = staticCompositionLocalOf { LightColors }
+data class AppColors(
+    val primary: Color,
+    val secondary: Color,
+    val background: Color,
+    val error: Color,
+    val surface: Color,
+    val onPrimary: Color,
+    val onSecondary: Color,
+    val onBackground: Color,
+    val onError: Color,
+    val onSurface: Color
+)
+
+val PrismDarkColors = AppColors(
+    primary = PrimaryPurple,
+    secondary = AccentCyan,
+    background = BgDeep,
+    error = ErrorColor,
+    surface = SurfaceColor,
+    onPrimary = OnPrimary,
+    onSecondary = Color.Black,
+    onBackground = OnBackground,
+    onError = OnPrimary,
+    onSurface = OnSurface
+)
+
+val PrismLightColors = AppColors(
+    primary = LightPrimary,
+    secondary = AccentCyan,
+    background = LightBg,
+    error = Color(0xFFDC2626),
+    surface = LightSurface,
+    onPrimary = Color.White,
+    onSecondary = Color.White,
+    onBackground = LightOnBackground,
+    onError = Color.White,
+    onSurface = LightOnSurface
+)
+
+val PrismHighContrastColors = AppColors(
+    primary = Color.Yellow,
+    secondary = Color.Cyan,
+    background = Color.Black,
+    error = Color.Red,
+    surface = Color.Black,
+    onPrimary = Color.Black,
+    onSecondary = Color.Black,
+    onBackground = Color.Yellow,
+    onError = Color.Black,
+    onSurface = Color.Yellow
+)
+
+val LocalAppColors = staticCompositionLocalOf { PrismDarkColors }
 val LocalAppTypography = staticCompositionLocalOf { DefaultTypography }
 val LocalAppSpacing = staticCompositionLocalOf { DefaultSpacing }
 
@@ -25,36 +78,42 @@ object AppTheme {
 
 @Composable
 fun AppDesignSystemTheme(
-    themeMode: String = "Claro",
+    themeMode: String = "Oscuro",
     content: @Composable () -> Unit
 ) {
     val appColors = when (themeMode) {
-        "Oscuro" -> DarkColors
-        "Alto Contraste" -> HighContrastColors
-        else -> LightColors
+        "Claro" -> PrismLightColors
+        "Alto Contraste" -> PrismHighContrastColors
+        else -> PrismDarkColors
     }
 
     val materialColorScheme = when (themeMode) {
-        "Oscuro" -> darkColorScheme(
-            primary = DarkColors.primary,
-            secondary = DarkColors.secondary,
-            background = DarkColors.background,
-            surface = DarkColors.surface,
-            error = DarkColors.error
+        "Claro" -> lightColorScheme(
+            primary = PrismLightColors.primary,
+            secondary = PrismLightColors.secondary,
+            background = PrismLightColors.background,
+            surface = PrismLightColors.surface,
+            onBackground = PrismLightColors.onBackground,
+            onSurface = PrismLightColors.onSurface,
+            error = PrismLightColors.error
         )
         "Alto Contraste" -> darkColorScheme(
-            primary = HighContrastColors.primary,
-            secondary = HighContrastColors.secondary,
-            background = HighContrastColors.background,
-            surface = HighContrastColors.surface,
-            error = HighContrastColors.error
+            primary = PrismHighContrastColors.primary,
+            secondary = PrismHighContrastColors.secondary,
+            background = PrismHighContrastColors.background,
+            surface = PrismHighContrastColors.surface,
+            onBackground = PrismHighContrastColors.onBackground,
+            onSurface = PrismHighContrastColors.onSurface,
+            error = PrismHighContrastColors.error
         )
-        else -> lightColorScheme(
-            primary = LightColors.primary,
-            secondary = LightColors.secondary,
-            background = LightColors.background,
-            surface = LightColors.surface,
-            error = LightColors.error
+        else -> darkColorScheme(
+            primary = PrismDarkColors.primary,
+            secondary = PrismDarkColors.secondary,
+            background = PrismDarkColors.background,
+            surface = PrismDarkColors.surface,
+            onBackground = PrismDarkColors.onBackground,
+            onSurface = PrismDarkColors.onSurface,
+            error = PrismDarkColors.error
         )
     }
 
